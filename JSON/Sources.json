@@ -1,0 +1,45 @@
+  {
+  "Source1":{
+    "SourceName": "PC",
+    "Icon":"Keyboard",
+    "AudioInput":1,
+    "VideoInput":1,
+    "SubpageType":"NoControl",
+    "VideoDetected":"Video is detected and should be viewable at this time.",
+    "NoVideoDetected":"There is no video detected at this time.  Please make sure your device is connected and setup properly."
+  },
+
+  "Source2":{
+    "SourceName": "Table",
+    "Icon":"Laptop",
+    "AudioInput":12,
+    "VideoInput":7,
+    "SubpageType":"NoControl",
+    "VideoDetected":"Video is detected and should be viewable at this time.",
+    "NoVideoDetected":"There is no video detected at this time.  Please make sure your device is connected and setup properly."
+  },
+
+  "Source3":{
+    "SourceName": "VTC",
+    "Icon":"Camera",
+    "AudioInput":0,
+    "VideoInput":3,
+    "SubpageType":"VTC",
+    "VideoDetected":"Video is detected and should be viewable at this time.",
+    "NoVideoDetected":"There is no video detected at this time.  Please make sure your device is connected and setup properly."
+
+  },
+
+
+  "Source4":{
+    "SourceName": "BYOD",
+    "Icon":"CastWhite",
+    "AudioInput":7,
+    "VideoInput":2,
+    "SubpageType":"NoControl",
+    "VideoDetected":"Please follow the directions on the screen.",
+    "NoVideoDetected":"There is no video detected at this time.  Please make sure your device is connected and setup properly."
+    }
+
+
+  }

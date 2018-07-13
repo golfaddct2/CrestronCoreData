@@ -1,0 +1,63 @@
+  {
+  "Item1":{
+    "Name": "Barco",
+    "Icon":"CastWhite",
+    "Enable":1
+  },
+
+  "Item2":{
+    "Name": "PC",
+    "Icon":"desktopWhite",
+    "Enable":1
+  },
+
+  "Item3":{
+    "Name":"Table",
+    "Icon":"InputWhite",
+    "Enable":1
+  },
+
+  "Item4":{
+    "Name": "Corner",
+    "Icon":"inputWhite",
+    "Enable":1
+  },
+
+  "Item5":{
+    "Name": "CableTV",
+    "Icon":"TV",
+    "Enable":1
+  },
+
+  "Item6":{
+    "Name": "VTC",
+    "Icon":"camera",
+    "Enable":1
+  },
+
+  "Item7":{
+    "Name": "VOIP",
+    "Icon":"Phone",
+    "Enable":1
+  },
+
+  "Item8":{
+    "Name": "Power Off",
+    "Icon":"Power",
+    "Enable":1
+  },
+
+  "Item9":{
+    "Name": "Power Off",
+    "Icon":"Blank",
+    "Enable":0
+  },
+
+  "Item10":{
+    "Name": "Power Off",
+    "Icon":"Blank",
+    "Enable":0
+  },
+
+
+}

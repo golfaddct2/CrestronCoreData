@@ -1,0 +1,8 @@
+C:\Programming\S#\htdCoreData\htdCoreData\bin\Debug\htdCoreData.dll
+C:\Programming\S#\htdCoreData\htdCoreData\bin\Debug\htdCoreData.pdb
+C:\Programming\S#\htdCoreData\htdCoreData\bin\Debug\SimplSharpCustomAttributesInterface.dll
+C:\Programming\S#\htdCoreData\htdCoreData\bin\Debug\SimplSharpHelperInterface.dll
+C:\Programming\S#\htdCoreData\htdCoreData\obj\Debug\ResolveAssemblyReference.cache
+C:\Programming\S#\htdCoreData\htdCoreData\obj\Debug\htdCoreData.dll
+C:\Programming\S#\htdCoreData\htdCoreData\obj\Debug\htdCoreData.pdb
+C:\Programming\S#\htdCoreData\htdCoreData\bin\Debug\Newtonsoft.Json.Compact.dll

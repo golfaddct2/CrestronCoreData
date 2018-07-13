@@ -1,0 +1,170 @@
+/*******************************************************************************************
+  SIMPL+ Module Information
+  (Fill in comments below)
+*******************************************************************************************/
+/*
+Programmer: HashTagDad
+*/
+
+/*******************************************************************************************
+  Compiler Directives
+  (Uncomment and declare compiler directives as needed)
+*******************************************************************************************/
+// #ENABLE_DYNAMIC
+// #SYMBOL_NAME ""
+// #HINT ""
+// #DEFINE_CONSTANT
+// #CATEGORY "" 
+// #PRINT_TO_TRACE
+// #DIGITAL_EXPAND 
+// #ANALOG_SERIAL_EXPAND 
+// #OUTPUT_SHIFT 
+// #HELP_PDF_FILE ""
+
+#DEFAULT_VOLATILE
+#ENABLE_STACK_CHECKING
+#ENABLE_TRACE
+// #ENCODING_ASCII
+// #ENCODING_UTF16
+// #ENCODING_INHERIT_FROM_PARENT
+// #ENCODING_INHERIT_FROM_PROGRAM
+/*
+#HELP_BEGIN
+   (add additional lines of help lines)
+#HELP_END
+*/
+
+/*******************************************************************************************
+  Include Libraries
+  (Uncomment and include additional libraries as needed)
+*******************************************************************************************/
+// #CRESTRON_LIBRARY ""
+// #USER_LIBRARY ""
+#INCLUDEPATH "C:\\Programming\\S#\\htdCoreData\\htdCoreData\\bin\\Debug"
+#USER_SIMPLSHARP_LIBRARY "htdCoreData"
+
+/*******************************************************************************************
+  DIGITAL, ANALOG and SERIAL INPUTS and OUTPUTS
+  (Uncomment and declare inputs and outputs as needed)
+*******************************************************************************************/
+DIGITAL_INPUT debug; 
+ANALOG_INPUT requestedSource,videoSourceStatus;
+
+ 
+// BUFFER_INPUT 
+
+// DIGITAL_OUTPUT 
+ANALOG_OUTPUT SourceVideoInput,SourceAudioInput,ActiveSourceFb;
+STRING_OUTPUT ActiveSourceName;
+DIGITAL_OUTPUT AreaIsOn,AreaIsOff;
+
+
+
+
+Routing myRouting;
+
+/*******************************************************************************************
+  Parameters
+  (Uncomment and declare parameters as needed)
+*******************************************************************************************/
+// INTEGER_PARAMETER
+// SIGNED_INTEGER_PARAMETER
+// LONG_INTEGER_PARAMETER
+// SIGNED_LONG_INTEGER_PARAMETER
+// STRING_PARAMETER
+
+/*******************************************************************************************
+  Parameter Properties
+  (Uncomment and declare parameter properties as needed)
+*******************************************************************************************/
+/*
+#BEGIN_PARAMETER_PROPERTIES parameter_variable, parameter_variable, ...
+   // propValidUnits = // unitString or unitDecimal|unitHex|unitPercent|unitCharacter|unitTime|unitTicks;
+   // propDefaultUnit = // unitString, unitDecimal, unitHex, unitPercent, unitCharacter, unitTime or unitTicks;
+   // propBounds = lower_bound , upper_bound;
+   // propDefaultValue = ;  // or, propDefaultValue = "";
+   // propList = // { "value" , "label" } , { "value" , "label" } , ... ;
+   // propShortDescription = "status_bar_hint_text";
+   // #BEGIN_PROP_FULL_DESCRIPTION  line_1...  line_2...  line_n  #END_PROP_FULL_DESCRIPTION
+   // #BEGIN_PROP_NOTES line_1...  line_2...  line_n  #END_PROP_NOTES
+#END_PARAMETER_PROPERTIES
+*/
+
+/*******************************************************************************************
+  Global Variables
+  (Uncomment and declare global variables as needed)
+  Note:  Be sure to initialize all declared STRING variables as needed
+         For example, in Function Main: myString = "";
+*******************************************************************************************/
+/*******************************************************************************************
+  Event Handlers
+  (Uncomment and declare additional event handlers as needed)
+*******************************************************************************************/
+Change debug
+{
+
+	myRouting.debug = debug;
+}
+
+Change requestedSource
+{
+	if(requestedSource >0)	 
+	myRouting.RetrieveRouting(requestedSource);
+	else
+	{
+	SourceVideoInput = 0;
+	SourceAudioInput = 0;
+	}
+}
+
+Change videoSourceStatus
+{
+	if (videoSourceStatus > 0)
+	{
+	ActiveSourceFb = myRouting.SourceFb(videoSourceStatus);
+	AreaIsOff = 0;
+	AreaIsOn = 1;
+	}
+	else
+	{
+	ActiveSourceFb = 0;
+	ActiveSourceName = "Off";
+	AreaIsOff = 1;
+	AreaIsOn = 0;
+    }
+
+
+}
+
+
+CALLBACK FUNCTION ReceiveData(INTEGER videoInput, INTEGER audioInput)
+{
+	SourceVideoInput = videoInput;
+	SourceAudioInput = audioInput;
+			
+}
+
+CALLBACK FUNCTION GetNameData(STRING activeName)
+{
+	ActiveSourceName = activeName;
+
+}
+
+
+
+/*******************************************************************************************
+  Main()
+  Uncomment and place one-time startup code here
+  (This code will get called when the system starts up)
+*******************************************************************************************/
+
+Function Main()
+{
+	WaitForInitializationComplete();
+	REGISTERDELEGATE(myRouting, RoutingData, ReceiveData);
+	REGISTERDELEGATE(myRouting, RetrieveName, GetNameData);
+
+
+}
+
+
